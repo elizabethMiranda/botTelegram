@@ -31,6 +31,25 @@ class Server{
                 throw err;
             }
           })
+        
+          this.app.get('/update-mensaje', async(req, res) => {
+            try{
+                const tg = new Telegram.Telegram(process.env.TELEGRAM_TOKEN)
+                let chatId={
+                    chat_id:'-1002023907305',
+                    message_id:25,
+                }
+                const resultsEd = await tg.api.editMessageText('Four message editado!',chatId);
+                //const { _messageId, _text } = results;
+                console.log('datos de messageid');
+                console.log(resultsEd);
+                //console.log('Texto enviado');
+                //console.log(_text);
+            }catch(err){
+                console.log('Error al enviar mensaje', err);
+                throw err;
+            }
+          })
     }
 
     listen(){
