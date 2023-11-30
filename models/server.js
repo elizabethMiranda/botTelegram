@@ -20,7 +20,7 @@ class Server{
         this.app.get('/mensaje', async(req, res) => {
             try{
                 const tg = new Telegram.Telegram(process.env.TELEGRAM_TOKEN)
-                const results = await tg.api.sendMessage('-1002023907305','Four message!',process.env.TELEGRAM_TOKEN,'HTML');
+                const results = await tg.api.sendMessage('','Four message!',process.env.TELEGRAM_TOKEN,'HTML');
                 const { _messageId, _text } = results;
                 console.log('datos de messageid');
                 console.log(_messageId);
@@ -36,8 +36,8 @@ class Server{
             try{
                 const tg = new Telegram.Telegram(process.env.TELEGRAM_TOKEN)
                 let chatId={
-                    chat_id:'-1002023907305',
-                    message_id:25,
+                    chat_id:'',
+                    message_id:0,
                 }
                 const resultsEd = await tg.api.editMessageText('Four message editado!',chatId);
                 //const { _messageId, _text } = results;
